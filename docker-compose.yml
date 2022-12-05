@@ -25,7 +25,7 @@ services:
         ipv4_address: 192.168.100.100
 
   mysql:
-    image: m.docker-registry.ir/mysql:latest # use latest version of mysql
+    image: mysql:latest # use latest version of mysql
     container_name: db # add a name for the container
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
@@ -45,7 +45,7 @@ services:
 
   phpmyadmin:
     container_name: phpmyadmin
-    image: m.docker-registry.ir/phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin/phpmyadmin:latest
     ports:
      - 8082:80
     environment:
