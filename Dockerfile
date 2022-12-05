@@ -1,4 +1,6 @@
-FROM m.docker-registry.ir/php:7.4-apache
+#FROM m.docker-registry.ir/php:7.4-apache
+
+FROM php:7.4-apache
 
 
 
@@ -26,7 +28,7 @@ RUN apt-get install -y \
   && docker-php-ext-install zip
 
 
-
+#install python packages
 RUN apt-get install -y  python3.10 pip
 RUN pip install numpy==1.22.1
 RUN pip install pillow
@@ -45,6 +47,8 @@ COPY ./home /var/www/html/home
 COPY ./user /var/www/html/user
 COPY ./.htaccess /var/www/html/
 
+
+#for ssl
 #COPY ./ssl/000-default.conf /etc/apache2/sites-available/000-default.conf
 #COPY ./ssl/certificate.crt /etc/ssl/certificate.crt
 #COPY ./ssl/ca_bundle.crt /etc/ssl/ca_bundle.crt
