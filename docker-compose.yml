@@ -1,6 +1,6 @@
 version: "3.3"
 
-services: # adds 2 services: mysql and phpmyadmin to connect with
+services:
   website:
     container_name: php7.4-apache
     build:
@@ -39,6 +39,9 @@ services: # adds 2 services: mysql and phpmyadmin to connect with
     ports:
       - '3306:3306'
     restart: always
+    networks:
+      customnetwork:
+        ipv4_address: 192.168.100.101
 
   phpmyadmin:
     container_name: phpmyadmin
@@ -54,8 +57,11 @@ services: # adds 2 services: mysql and phpmyadmin to connect with
       # MYSQL_USER: newuser
       # MYSQL_PASSWORD: mypassword
     restart: always
+    networks:
+      customnetwork:
+        ipv4_address: 192.168.100.102
 
-volumes: # add persistent data even if container is removed.
+volumes: 
   my-db:
 
 networks:
